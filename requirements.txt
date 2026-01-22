@@ -1,0 +1,4 @@
+pytrends
+pandas
+requests
+urllib3<2.0.0

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waxinci Clone - Trending Keywords</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'wax-bg': '#f3f4f6', 
+                        'wax-card': '#ffffff',
+                        'wax-text': '#1f2937',
+                        'wax-accent': '#3b82f6',
+                        'trend-green': '#10b981',
+                        'trend-fire': '#f59e0b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Hide scrollbar for clean look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: #f8fafc;
+        }
+        .trend-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .trend-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Header -->
+    <header class="bg-white border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center text-white font-bold text-lg">W</div>
+                <h1 class="text-xl font-bold tracking-tight">Waxinci Clone</h1>
+            </div>
+            <div class="text-sm text-gray-500" id="last-updated">
+                Last updated: Checking...
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Controls -->
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+            <div>
+                <h2 class="text-2xl font-bold text-gray-900">Rising Keywords</h2>
+                <p class="text-gray-500 mt-1">Discover breakout search terms from Google Trends.</p>
+            </div>
+            
+            <div class="flex items-center gap-3 bg-white p-1.5 rounded-xl border shadow-sm">
+                <button id="prev-batch" class="p-2 hover:bg-gray-100 rounded-lg text-gray-600 disabled:opacity-50">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <span id="batch-indicator" class="text-sm font-medium w-24 text-center">Batch 1/1</span>
+                <button id="next-batch" class="p-2 hover:bg-gray-100 rounded-lg text-gray-600 disabled:opacity-50">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Grid Container -->
+        <!-- 原网站是横向滚动的列还是网格？原网站是卡片瀑布流或网格。这里用响应式网格模仿原版体验 -->
+        <div id="grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Loading State -->
+            <div class="col-span-full h-64 flex items-center justify-center text-gray-400">
+                <div class="flex flex-col items-center gap-3">
+                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-black"></div>
+                    <p>Loading trending data...</p>
+                    <p class="text-xs text-gray-400 mt-2">Make sure you have run <code class="bg-gray-100 px-1 py-0.5 rounded">python scrape_data.py</code></p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t mt-12 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
+            <p>Data sourced from Google Trends via custom scraper.</p>
+            <p class="mt-2 text-xs">Based on Waxinci.org concept.</p>
+        </div>
+    </footer>
+
+    <!-- Logic -->
+    <script>
+        // Configuration
+        const ITEMS_PER_PAGE = 24;
+        let allSeeds = []; // All available seed keywords (categories)
+        let currentBatchIndex = 0;
+        let globalData = {};
+
+        async function loadData() {
+            try {
+                // Fetch the JSON generated by our python script
+                const response = await fetch('./trending_data.json');
+                if (!response.ok) throw new Error("Could not find trending_data.json");
+                
+                const json = await response.json();
+                globalData = json.data || json; // Handle structure
+                
+                // Get all seeds that actually have data
+                allSeeds = Object.keys(globalData).filter(seed => {
+                    const seedData = globalData[seed];
+                    // Ensure it has rising items
+                    return seedData && Array.isArray(seedData) && seedData.length > 0;
+                });
+
+                if (allSeeds.length === 0) {
+                    document.getElementById('grid-container').innerHTML = `
+                        <div class="col-span-full text-center py-20 text-gray-500">
+                            No trending data found in JSON.<br>Run the Python script to fetch new data.
+                        </div>
+                    `;
+                    return;
+                }
+
+                updateBatchIndicator();
+                renderGrid();
+                
+                // Set update time if available, or just use current time if file is new
+                document.getElementById('last-updated').innerText = `Last updated: ${new Date().toLocaleDateString()}`;
+
+            } catch (error) {
+                console.error(error);
+                document.getElementById('grid-container').innerHTML = `
+                    <div class="col-span-full text-center py-20 text-red-500 bg-red-50 rounded-xl border border-red-100">
+                        <p class="font-bold text-lg">Error Loading Data</p>
+                        <p class="mt-2">Could not load <code>trending_data.json</code>.</p>
+                        <p class="text-sm mt-4 text-gray-600">
+                            1. Run <code class="bg-white px-2 py-1 rounded border">python scrape_data.py</code> in your terminal.<br>
+                            2. If opening directly from file system/browser, you might need a local server.<br>
+                            (Try: <code class="bg-white px-2 py-1 rounded border">python -m http.server</code>)
+                        </p>
+                    </div>
+                `;
+            }
+        }
+
+        function updateBatchIndicator() {
+            const totalBatches = Math.ceil(allSeeds.length / ITEMS_PER_PAGE);
+            document.getElementById('batch-indicator').innerText = `Batch ${currentBatchIndex + 1}/${totalBatches}`;
+            document.getElementById('prev-batch').disabled = currentBatchIndex === 0;
+            document.getElementById('next-batch').disabled = currentBatchIndex >= totalBatches - 1;
+        }
+
+        function renderGrid() {
+            const container = document.getElementById('grid-container');
+            container.innerHTML = '';
+
+            const start = currentBatchIndex * ITEMS_PER_PAGE;
+            const end = start + ITEMS_PER_PAGE;
+            const seedsToShow = allSeeds.slice(start, end);
+
+            seedsToShow.forEach(seed => {
+                const items = globalData[seed]; // List of rising queries for this seed
+                if (!items || items.length === 0) return;
+
+                // Create Card
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-xl border border-gray-200 p-5 trend-card flex flex-col h-full';
+
+                // Header (Seed Keyword)
+                const header = `
+                    <div class="flex items-center justify-between mb-4 pb-3 border-b border-gray-100">
+                        <h3 class="font-bold text-lg capitalize text-gray-900">${seed}</h3>
+                        <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">${items.length} top</span>
+                    </div>
+                `;
+
+                // List
+                let listHtml = '<ul class="flex-1 space-y-3">';
+                // Show top 5 items
+                items.slice(0, 5).forEach((item, idx) => {
+                    const isBreakout = item.value === 'Breakout' || (typeof item.value === 'number' && item.value > 1000);
+                    const growthText = item.value === 'Breakout' ? 'Breakout' : `+${item.value}%`;
+                    const badgeClass = isBreakout ? 'bg-red-50 text-red-600 border-red-100' : 'bg-green-50 text-green-600 border-green-100';
+                    const icon = isBreakout ? 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik04LjUgMTRjLjQxLS41IDIuMTUtNC44IDItNS4yYTQgNCAwIDAgMC04IDAgYzAuMjIgMi44IDIuMDggNi44IDIgNyIvPjxwYXRoIGQ9Ik04LjUgMTQgMTIgMTZoLThsMy41LTIiLz48cGF0aCBkPSJtMTAuNSAxNi41IDIuNS0y\"Lz48cGF0aCBkPSJNMTAuNSAxNi41IDIyIDgiLz48cGF0aCBkPSJtMTQuNSAyMSAzLTVsMyA1Ii8+PC9zdmc+' : '';
+
+                    listHtml += `
+                        <li class="flex items-start justify-between group cursor-pointer hover:bg-gray-50 -mx-2 p-2 rounded-lg transition-colors" onclick="window.open('https://www.google.com/search?q=${encodeURIComponent(item.query)}', '_blank')">
+                            <span class="text-sm font-medium text-gray-700 group-hover:text-black line-clamp-1 mr-2">${item.query}</span>
+                            <span class="shrink-0 text-[10px] font-bold px-1.5 py-0.5 rounded border ${badgeClass} inline-flex items-center gap-1">
+                                ${isBreakout ? '<span class="text-lg leading-none">🔥</span>' : '📈'} ${growthText}
+                            </span>
+                        </li>
+                    `;
+                });
+                listHtml += '</ul>';
+
+                // More Link
+                const footer = `
+                    <div class="mt-4 pt-3 border-t border-gray-50 flex justify-between items-center">
+                        <a href="https://trends.google.com/trends/explore?q=${encodeURIComponent(seed)}" target="_blank" class="text-xs text-blue-500 hover:underline flex items-center gap-1">
+                            View on Trends
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </div>
+                `;
+
+                card.innerHTML = header + listHtml + footer;
+                container.appendChild(card);
+            });
+        }
+
+        // Event Listeners
+        document.getElementById('prev-batch').addEventListener('click', () => {
+            if (currentBatchIndex > 0) {
+                currentBatchIndex--;
+                updateBatchIndicator();
+                renderGrid();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        document.getElementById('next-batch').addEventListener('click', () => {
+            const totalBatches = Math.ceil(allSeeds.length / ITEMS_PER_PAGE);
+            if (currentBatchIndex < totalBatches - 1) {
+                currentBatchIndex++;
+                updateBatchIndicator();
+                renderGrid();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        // Init
+        loadData();
+
+    </script>
+</body>
+</html>
