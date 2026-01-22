@@ -1,106 +1,180 @@
 import time
 import json
 import random
+import os
 import pandas as pd
 from pytrends.request import TrendReq
 from pytrends.exceptions import ResponseError
 from datetime import datetime
 
-# ================= 配置 =================
+# ================= 配置: 极度保守模式 =================
 OUTPUT_FILE = "trending_data.json"
 HL = 'en-US'
 TZ = 360  # US CST
 
-# 这里是完整的种子词列表 (模拟原网站的279个)
-# 为了演示，我先放入我们分类出来的几十个核心词。
-# 实际运行时，你可以把279个词都填进去。
-SEEDS = [
-    # AI & Generator
-    "ai", "assistant", "generator", "creator", "maker", "builder", "agent", 
-    "chatbot", "llm", "diffusion", "copilot",
-    # Tools
-    "upscale", "unblur", "editor", "enhancer", "converter", "scraper", "crawler",
-    "detector", "checker", "analyzer", "summarizer", "writer",
-    # Platforms
-    "roblox", "steam", "discord", "twitch", "tiktok", "instagram", "youtube",
-    # Tech
-    "python", "javascript", "react", "nextjs", "css", "linux", "docker",
-    # Web3 / Finance
-    "crypto", "bitcoin", "ethereum", "nft", "trading", "investment", "stock",
-    # General / Yearly
-    "2026", "trends", "news", "best", "top", "guide", "tutorial"
+# 策略配置
+BATCH_SIZE = 20      # 每次只抓 20 个种子词 (每次运行极其轻量)
+MIN_DELAY = 15       # 最小等待时间 (秒)
+MAX_DELAY = 40       # 最大等待时间 (秒) -- 极其缓慢，像真人在看网页一样
+
+# ================= 完整的 279+ 个种子词库 =================
+# 这里填入完整的种子列表，脚本每次会随机挑几个来更新
+ALL_SEEDS = [
+    # --- Year/General ---
+    "2026", "2025", "Best", "Top", "list", "example", "template", "sample", "guide", 
+    "format", "How to", "tutorial", "trends", "news", "review", "vs", "alternatives",
+    
+    # --- AI & Tech (Core) ---
+    "ai", "openai", "chatgpt", "gemini", "claude", "llama", "mistral", "hugging face",
+    "assistant", "agent", "advisor", "copilot", "chatbot", "llm", "diffusion", "transformer",
+    "generator", "creator", "maker", "builder", "designer", "developer", "coder",
+    "android", "ios", "windows", "linux", "macos", "python", "javascript", "react", "nextjs",
+    "compiler", "interpreter", "algorithm", "framework", "library", "api", "sdk",
+    
+    # --- Tools & Utilities ---
+    "upscale", "unblur", "editor", "enhancer", "optimizer", "converter", "compressor",
+    "scraper", "crawler", "parser", "extractor", "summarizer", "transcriber", "translator",
+    "paraphraser", "rewriter", "writer", "checker", "detector", "humanizer", "scanner",
+    "tester", "evaluator", "analyzer", "calculator", "simulator", "emulator",
+    "manager", "tracker", "scheduler", "planner", "calendar", "organizer", "syncer",
+    "recorder", "player", "viewer", "reader", "browser", "notifier", "alert",
+    
+    # --- Assets & Resources ---
+    "resources", "dashboard", "directory", "portal", "hub", "finder", "search",
+    "layout", "starter", "boilerplate", "ui kit", "component", "plugin", "extension",
+    "theme", "icon", "logo", "font", "illustration", "vector", "mockup",
+    
+    # --- Creative & Media ---
+    "image", "photo", "picture", "face", "portrait", "avatar", "profile",
+    "video", "movie", "film", "short", "clip", "reel",
+    "audio", "voice", "sound", "music", "song", "beat", "podcast",
+    "text", "code", "script", "prompt", "caption", "subtitle",
+    "style", "filter", "effect", "preset", "lut", "palette",
+    "chart", "graph", "diagram", "infographic", "map",
+    "anime", "cartoon", "manga", "comic", "tattoo", "sketch", "drawing",
+    "coloring page", "wallpaper", "background", "texture", "pattern",
+    "meme", "emoji", "sticker", "gif",
+    
+    # --- Platforms & Gaming ---
+    "Steam", "Roblox", "Scratch", "Itch.io", "Discord", "Twitch", "TikTok", 
+    "Instagram", "YouTube", "Twitter", "Reddit", "Pinterest", "LinkedIn",
+    "Github", "Gitlab", "Bitbucket", "Stack Overflow", "Kaggle",
+    "Epic Games", "Nintendo", "PlayStation", "Xbox", "Unity", "Unreal Engine",
+    "Godot", "Blender", "Figma", "Canva", "Adobe", "Microsoft", "Google", "Apple",
+    
+    # --- Finance & Crypto ---
+    "crypto", "bitcoin", "ethereum", "solana", "nft", "blockchain", "web3", "defi",
+    "wallet", "exchange", "broker", "trading", "investment", "stock", "market",
+    "insurance", "loan", "mortgage", "credit", "card", "bank", "tax", "wealth",
+    "finance", "money", "gold", "silver", "forex", "refinance", "attorney", "lawyer",
+    
+    # --- Lifestyle & Other ---
+    "job", "career", "remote", "freelance", "salary", "interview", "resume",
+    "travel", "flight", "hotel", "booking", "trip", "visa",
+    "health", "fitness", "diet", "workout", "yoga", "meditation",
+    "food", "recipe", "restaurant", "delivery",
+    "shopping", "deal", "coupon", "discount", "sale", "price",
+    "gift", "present", "toy", "game", "book", "course", "lesson"
 ]
 
-# 在本地测试时，只取前 5 个，避免等待太久
-# 部署到 GitHub Actions 时，可以去掉这个切片
-ACTIVE_SEEDS = SEEDS[:] # 使用全部 (需注意频率限制)
+def load_existing_data():
+    """读取已有的 JSON 文件，如果不存在则返回空结构"""
+    if os.path.exists(OUTPUT_FILE):
+        try:
+            with open(OUTPUT_FILE, 'r', encoding='utf-8') as f:
+                content = json.load(f)
+                # 兼容不同格式，确保返回字典
+                return content.get('data', content) 
+        except Exception as e:
+            print(f"[!] 读取现有文件出错: {e}, 将创建新数据。")
+    return {}
 
-def scrape():
-    print(f"[*] 启动抓取任务 - {datetime.now()}")
-    print(f"[*] 目标种子词数: {len(ACTIVE_SEEDS)}")
+def scrape_stealth_mode():
+    print(f"[*] 启动隐秘抓取模式 (Stealth Mode) - {datetime.now()}")
     
-    # 尝试加载现有数据，实现增量更新（防止一次挂掉全部重来）
-    try:
-        with open(OUTPUT_FILE, 'r') as f:
-            existing_data = json.load(f).get('data', {})
-            print(f"[*] 已加载现有数据: {len(existing_data)} 个分类")
-    except FileNotFoundError:
-        existing_data = {}
-        print("[*] 未发现现有数据，将创建新文件")
-
-    pytrends = TrendReq(hl=HL, tz=TZ,  timeout=(10,25), retries=2, backoff_factor=0.2)
+    # 1. 加载旧数据
+    current_data = load_existing_data()
+    print(f"[*] 现有知识库包含 {len(current_data)} 个分类")
+    
+    # 2. 随机选择本轮任务
+    # 从所有种子中随机选 BATCH_SIZE 个
+    # 优先选那些还没抓过的，或者很久没更新的（这里简化为纯随机，长期看是均匀的）
+    target_seeds = random.sample(ALL_SEEDS, min(BATCH_SIZE, len(ALL_SEEDS)))
+    
+    print(f"[*] 本次目标: {len(target_seeds)} 个随机词 -> {target_seeds}")
+    
+    # 初始化 pytrends (增加重试参数)
+    pytrends = TrendReq(
+        hl=HL, 
+        tz=TZ, 
+        timeout=(10,25), 
+        retries=3, 
+        backoff_factor=1.0 # 失败后等待更久
+    )
     
     success_count = 0
     fail_count = 0
     
-    for i, keyword in enumerate(ACTIVE_SEEDS):
-        print(f"\n[{i+1}/{len(ACTIVE_SEEDS)}] 正在处理: {keyword}")
+    # 3. 开始慢速抓取
+    for i, keyword in enumerate(target_seeds):
+        percent = (i + 1) / len(target_seeds) * 100
+        print(f"\n[{i+1}/{len(target_seeds)}] ({percent:.0f}%) 处理: {keyword}")
         
         try:
+            # 构建请求
             pytrends.build_payload([keyword], cat=0, timeframe='now 7-d', geo='', gprop='')
+            
+            # 获取数据
             related = pytrends.related_queries()
             data_payload = related.get(keyword)
             
             if data_payload and data_payload['rising'] is not None:
                 df = data_payload['rising']
-                
-                # 转换 Breakout 为可视化数值或字符串
-                # 这里的逻辑是直接保存原始值，前端处理显示
                 records = df.to_dict('records')
                 
-                # 存入大字典
-                existing_data[keyword] = records
+                # 更新到总数据库中 (覆盖旧的)
+                current_data[keyword] = records
                 success_count += 1
-                print(f"    √ 获取到 {len(records)} 个飙升词")
+                print(f"    √ 成功! 发现 {len(records)} 个新词")
             else:
-                print(f"    - 无飙升数据")
-                existing_data[keyword] = [] # 记录为空，避免重复请求? 也可以不记录
+                print(f"    - 无飙升数据 (可能是冷门词)")
+                # 即使没有数据，也记录一下，避免它是空的
+                current_data[keyword] = [] 
 
-            # 关键：随机休眠 2-6 秒，模拟人类
-            # 如果是 GitHub Actions，可以把这个时间设得更长，比如 60 秒，反正跑在云端不急
-            sleep_time = random.uniform(2, 5)
-            print(f"    ...休息 {sleep_time:.1f} 秒...")
-            time.sleep(sleep_time)
+            # ===== 核心：超长随机休眠 =====
+            # 只有在不是最后一个词的时候才休眠
+            if i < len(target_seeds) - 1:
+                sleep_time = random.uniform(MIN_DELAY, MAX_DELAY)
+                print(f"    ...隐身休眠 {sleep_time:.1f} 秒...")
+                time.sleep(sleep_time)
 
         except ResponseError as e:
-            print(f"    x Google 429 Error (Too Many Requests). 暂停 60秒...")
+            print(f"    x 触发 Google 警报 (429): {e}")
             fail_count += 1
-            time.sleep(60) # 遇到限制就睡 1 分钟
+            # 遇到封锁，直接进入长睡眠，甚至可以考虑直接退出脚本，明天再试
+            print("    ! 检测到封锁，强制休眠 120 秒...")
+            time.sleep(120)
+            
         except Exception as e:
-            print(f"    x 错误: {e}")
+            print(f"    x 未知错误: {e}")
             fail_count += 1
+            time.sleep(10)
 
-    # 保存结果
-    output = {
+    # 4. 保存结果 (合并更新)
+    print(f"\n[*] 正在保存数据...")
+    
+    final_output = {
         "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "data": existing_data
+        "total_seeds_tracked": len(ALL_SEEDS),
+        "active_data_count": len(current_data),
+        "data": current_data
     }
     
-    with open(OUTPUT_FILE, 'w') as f:
-        json.dump(output, f, indent=2)
+    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
+        json.dump(final_output, f, indent=2, ensure_ascii=False)
         
-    print(f"\n[*] 任务结束. 成功: {success_count}, 失败: {fail_count}")
-    print(f"[*] 数据已保存至 {OUTPUT_FILE}")
+    print(f"[*] 任务完成. 成功更新: {success_count}, 失败: {fail_count}")
+    print(f"[*] 此时数据库共包含 {len(current_data)} 个分类的数据")
 
 if __name__ == "__main__":
-    scrape()
+    scrape_stealth_mode()
