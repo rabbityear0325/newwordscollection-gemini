@@ -1,5 +1,7 @@
 {
-  "last_updated": "2026-01-22 07:32:41",
+  "last_updated": "2026-01-23 00:25:44",
+  "total_seeds_tracked": 270,
+  "active_data_count": 47,
   "data": {
     "ai": [
       {
@@ -638,7 +640,7 @@
         "value": 550
       },
       {
-        "query": "pok\u00e9mon trading card game",
+        "query": "pokémon trading card game",
         "value": 100
       }
     ],
@@ -702,7 +704,7 @@
         "value": 250
       },
       {
-        "query": "\u30b0\u30fc\u30b0\u30eb \u30de\u30c3\u30d7",
+        "query": "グーグル マップ",
         "value": 120
       },
       {
@@ -710,7 +712,7 @@
         "value": 90
       },
       {
-        "query": "\u30de\u30c3\u30d7",
+        "query": "マップ",
         "value": 80
       },
       {
@@ -784,6 +786,553 @@
         "value": 40
       }
     ],
-    "converter": []
+    "converter": [],
+    "list": [
+      {
+        "query": "endfield tier list",
+        "value": 3450
+      },
+      {
+        "query": "tier list arknights endfield",
+        "value": 3050
+      },
+      {
+        "query": "perfume recall list",
+        "value": 2450
+      },
+      {
+        "query": "arknight endfield tier list",
+        "value": 1450
+      },
+      {
+        "query": "surplus funds list",
+        "value": 550
+      },
+      {
+        "query": "oscar nominations 2026 list",
+        "value": 400
+      },
+      {
+        "query": "mlbb tier list",
+        "value": 170
+      },
+      {
+        "query": "voter list 2003 uttar pradesh",
+        "value": 120
+      },
+      {
+        "query": "marvel rivals tier list",
+        "value": 100
+      },
+      {
+        "query": "afcon winners list",
+        "value": 100
+      },
+      {
+        "query": "2002 voter list west bengal",
+        "value": 80
+      },
+      {
+        "query": "voter list 2003",
+        "value": 60
+      },
+      {
+        "query": "sir 2003 voter list",
+        "value": 60
+      },
+      {
+        "query": "bmc election 2026 candidates list",
+        "value": 60
+      },
+      {
+        "query": "lorwyn eclipsed card list",
+        "value": 60
+      },
+      {
+        "query": "voter list 2002",
+        "value": 50
+      },
+      {
+        "query": "voter list 2003 pdf download",
+        "value": 50
+      },
+      {
+        "query": "2002 voter list download",
+        "value": 40
+      }
+    ],
+    "food": [
+      {
+        "query": "non perishable food items",
+        "value": 600
+      },
+      {
+        "query": "non perishable food",
+        "value": 500
+      }
+    ],
+    "transcriber": [
+      {
+        "query": "medical transcriber training",
+        "value": 600
+      },
+      {
+        "query": "otranscribe",
+        "value": 170
+      },
+      {
+        "query": "court transcriber salary",
+        "value": 160
+      },
+      {
+        "query": "ipa transcriber",
+        "value": 80
+      },
+      {
+        "query": "ai sheet music transcriber",
+        "value": 70
+      },
+      {
+        "query": "transcriber adalah",
+        "value": 60
+      },
+      {
+        "query": "youtube downloader",
+        "value": 60
+      },
+      {
+        "query": "transcribe me",
+        "value": 50
+      },
+      {
+        "query": "riverside",
+        "value": 40
+      },
+      {
+        "query": "m4a to mp3",
+        "value": 40
+      }
+    ],
+    "tracker": [
+      {
+        "query": "northern lights tracker",
+        "value": 800
+      },
+      {
+        "query": "uss abraham lincoln tracker",
+        "value": 600
+      },
+      {
+        "query": "aurora tracker",
+        "value": 550
+      },
+      {
+        "query": "irs refund tracker",
+        "value": 450
+      },
+      {
+        "query": "nhl trade tracker",
+        "value": 170
+      },
+      {
+        "query": "storm tracker",
+        "value": 110
+      },
+      {
+        "query": "arc raiders event tracker",
+        "value": 100
+      },
+      {
+        "query": "poshan tracker update",
+        "value": 80
+      },
+      {
+        "query": "poshan tracker app",
+        "value": 70
+      },
+      {
+        "query": "poshan tracker",
+        "value": 50
+      },
+      {
+        "query": "marvel rivals tracker",
+        "value": 50
+      },
+      {
+        "query": "rivals tracker",
+        "value": 40
+      }
+    ],
+    "Stack Overflow": [
+      {
+        "query": "coursera",
+        "value": 8250
+      },
+      {
+        "query": "we work remotely",
+        "value": 6600
+      },
+      {
+        "query": "freecodecamp",
+        "value": 200
+      },
+      {
+        "query": "stack overflow คือ",
+        "value": 140
+      },
+      {
+        "query": "avast forum",
+        "value": 80
+      },
+      {
+        "query": "hackerrank",
+        "value": 80
+      },
+      {
+        "query": "stack overflow developer survey",
+        "value": 80
+      },
+      {
+        "query": "stack overflow developer survey 2025",
+        "value": 70
+      },
+      {
+        "query": "stack overflow survey 2025",
+        "value": 50
+      },
+      {
+        "query": "what is a stack overflow",
+        "value": 50
+      },
+      {
+        "query": "stack overflow jobs",
+        "value": 50
+      },
+      {
+        "query": "stack overflow error",
+        "value": 40
+      }
+    ],
+    "mortgage": [
+      {
+        "query": "ptsb mortgage rate cuts",
+        "value": 3850
+      },
+      {
+        "query": "australia mortgage rate changes",
+        "value": 1650
+      },
+      {
+        "query": "scottish mortgage investment trust",
+        "value": 80
+      },
+      {
+        "query": "mortgage rates fall",
+        "value": 60
+      }
+    ],
+    "coloring page": [
+      {
+        "query": "100th day of school coloring page",
+        "value": 250
+      },
+      {
+        "query": "snow day coloring page",
+        "value": 120
+      },
+      {
+        "query": "valentines coloring pages",
+        "value": 50
+      },
+      {
+        "query": "valentines day coloring pages",
+        "value": 50
+      }
+    ],
+    "creator": [
+      {
+        "query": "deadpool creator cup",
+        "value": 2750
+      },
+      {
+        "query": "asap rocky tyler the creator",
+        "value": 450
+      },
+      {
+        "query": "asap rocky",
+        "value": 400
+      }
+    ],
+    "cartoon": [
+      {
+        "query": "masters of the universe",
+        "value": 300
+      },
+      {
+        "query": "masters of the universe cartoon",
+        "value": 300
+      },
+      {
+        "query": "he man cartoon",
+        "value": 90
+      }
+    ],
+    "song": [
+      {
+        "query": "arctic monkeys new song",
+        "value": 2150
+      },
+      {
+        "query": "harry styles new song",
+        "value": 850
+      },
+      {
+        "query": "kanye west heil hitler song",
+        "value": 550
+      },
+      {
+        "query": "chinyere udoma latest song",
+        "value": 70
+      }
+    ],
+    "Nintendo": [
+      {
+        "query": "11 year old nintendo switch",
+        "value": 1250
+      }
+    ],
+    "solana": [
+      {
+        "query": "bfs coin",
+        "value": 23250
+      },
+      {
+        "query": "korsan taksi izmir",
+        "value": 4100
+      },
+      {
+        "query": "moyuka uchijima",
+        "value": 2050
+      },
+      {
+        "query": "solana mobile seeker",
+        "value": 200
+      },
+      {
+        "query": "solana seeker phone",
+        "value": 130
+      },
+      {
+        "query": "solana seeker",
+        "value": 110
+      },
+      {
+        "query": "solana mobile",
+        "value": 90
+      },
+      {
+        "query": "usor",
+        "value": 80
+      },
+      {
+        "query": "solana phone",
+        "value": 60
+      },
+      {
+        "query": "phantom",
+        "value": 40
+      },
+      {
+        "query": "el tiempo la solana",
+        "value": 40
+      }
+    ],
+    "forex": [
+      {
+        "query": "jink",
+        "value": 1550
+      }
+    ],
+    "audio": [
+      {
+        "query": "papaoutai audio",
+        "value": 80
+      }
+    ],
+    "fitness": [
+      {
+        "query": "is planet fitness open on mlk day",
+        "value": 4500
+      },
+      {
+        "query": "magnus fitness world",
+        "value": 200
+      },
+      {
+        "query": "la fitness hours",
+        "value": 60
+      },
+      {
+        "query": "planet fitness customer service",
+        "value": 50
+      }
+    ],
+    "compressor": [
+      {
+        "query": "education portal 3.0",
+        "value": 190
+      },
+      {
+        "query": "osssc",
+        "value": 90
+      },
+      {
+        "query": "pdf compressor to 100kb",
+        "value": 40
+      }
+    ],
+    "chatgpt": [],
+    "tester": [
+      {
+        "query": "antifreeze tester",
+        "value": 140
+      },
+      {
+        "query": "tester kz",
+        "value": 100
+      }
+    ],
+    "deal": [
+      {
+        "query": "greenland deal framework",
+        "value": 21550
+      },
+      {
+        "query": "donald trump canada china deal",
+        "value": 11550
+      },
+      {
+        "query": "greenland deal reached",
+        "value": 4200
+      },
+      {
+        "query": "canada china ev deal",
+        "value": 3700
+      },
+      {
+        "query": "carney canada china trade deal",
+        "value": 2700
+      },
+      {
+        "query": "grönland deal",
+        "value": 2200
+      },
+      {
+        "query": "eu trade deal with us",
+        "value": 1700
+      },
+      {
+        "query": "trump deal greenland",
+        "value": 1400
+      },
+      {
+        "query": "did trump make a deal with greenland",
+        "value": 1350
+      },
+      {
+        "query": "trump deal on greenland",
+        "value": 1300
+      },
+      {
+        "query": "chagos deal uk",
+        "value": 1300
+      },
+      {
+        "query": "canada china deal",
+        "value": 1200
+      },
+      {
+        "query": "chagos islands deal",
+        "value": 1150
+      },
+      {
+        "query": "chagos islands",
+        "value": 1100
+      },
+      {
+        "query": "trump grönland deal",
+        "value": 1050
+      },
+      {
+        "query": "canada and china trade deal",
+        "value": 1050
+      },
+      {
+        "query": "china canada trade deal",
+        "value": 1050
+      },
+      {
+        "query": "greenland deal",
+        "value": 1000
+      },
+      {
+        "query": "canada and china deal",
+        "value": 900
+      },
+      {
+        "query": "carney china deal",
+        "value": 900
+      },
+      {
+        "query": "eu us trade deal",
+        "value": 900
+      },
+      {
+        "query": "chagos deal",
+        "value": 700
+      },
+      {
+        "query": "apple iphone 15 pro deal",
+        "value": 700
+      },
+      {
+        "query": "addie deal",
+        "value": 600
+      },
+      {
+        "query": "canada trade deal with china",
+        "value": 600
+      }
+    ],
+    "Github": [
+      {
+        "query": "メダマスク",
+        "value": 3600
+      },
+      {
+        "query": "メタマスグ",
+        "value": 3400
+      },
+      {
+        "query": "メタマースク",
+        "value": 2500
+      },
+      {
+        "query": "メタマスク ウォレット",
+        "value": 170
+      },
+      {
+        "query": "メタマスク metasupply gith",
+        "value": 140
+      },
+      {
+        "query": "メタマスク metasupply git",
+        "value": 130
+      },
+      {
+        "query": "メタマスク metasupply gi",
+        "value": 130
+      }
+    ]
   }
 }
