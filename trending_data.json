@@ -1,7 +1,7 @@
 {
-  "last_updated": "2026-01-23 00:25:44",
+  "last_updated": "2026-01-24 01:54:02",
   "total_seeds_tracked": 270,
-  "active_data_count": 47,
+  "active_data_count": 65,
   "data": {
     "ai": [
       {
@@ -188,7 +188,7 @@
     "editor": [
       {
         "query": "vm editor",
-        "value": 50
+        "value": 60
       }
     ],
     "enhancer": [
@@ -1080,19 +1080,27 @@
     "song": [
       {
         "query": "arctic monkeys new song",
-        "value": 2150
+        "value": 2600
       },
       {
         "query": "harry styles new song",
-        "value": 850
+        "value": 900
       },
       {
         "query": "kanye west heil hitler song",
         "value": 550
       },
       {
-        "query": "chinyere udoma latest song",
-        "value": 70
+        "query": "sean o'malley",
+        "value": 250
+      },
+      {
+        "query": "song sung blue streaming",
+        "value": 40
+      },
+      {
+        "query": "song joong-ki",
+        "value": 40
       }
     ],
     "Nintendo": [
@@ -1333,6 +1341,378 @@
         "query": "メタマスク metasupply gi",
         "value": 130
       }
-    ]
+    ],
+    "planner": [
+      {
+        "query": "nicola peltz wedding planner",
+        "value": 3700
+      },
+      {
+        "query": "nicola peltz wedding planner texts",
+        "value": 3450
+      },
+      {
+        "query": "nzta journey planner",
+        "value": 550
+      },
+      {
+        "query": "trb annual planner 2026",
+        "value": 200
+      },
+      {
+        "query": "factory planner",
+        "value": 100
+      },
+      {
+        "query": "course schedule planner",
+        "value": 100
+      },
+      {
+        "query": "animal crossing island planner",
+        "value": 100
+      },
+      {
+        "query": "acnh island planner",
+        "value": 90
+      },
+      {
+        "query": "tnpsc annual planner 2026",
+        "value": 90
+      }
+    ],
+    "Canva": [],
+    "course": [
+      {
+        "query": "pete dye stadium course",
+        "value": 900
+      },
+      {
+        "query": "tatmadaw air pilot course",
+        "value": 500
+      },
+      {
+        "query": "hualalai golf course",
+        "value": 400
+      },
+      {
+        "query": "nbems ai course",
+        "value": 350
+      },
+      {
+        "query": "novasoft photoshop course singapore",
+        "value": 350
+      },
+      {
+        "query": "vibration analysis course",
+        "value": 350
+      },
+      {
+        "query": "pga west stadium course",
+        "value": 200
+      },
+      {
+        "query": "course explorer uiuc",
+        "value": 180
+      },
+      {
+        "query": "course schedule planner",
+        "value": 90
+      },
+      {
+        "query": "nptel",
+        "value": 50
+      }
+    ],
+    "Pinterest": [],
+    "investment": [
+      {
+        "query": "canadian investment regulatory organization",
+        "value": 60
+      },
+      {
+        "query": "invit investment",
+        "value": 60
+      },
+      {
+        "query": "scottish mortgage investment trust aktie",
+        "value": 50
+      }
+    ],
+    "loan": [
+      {
+        "query": "manappuram finance limited – gold loan",
+        "value": 60
+      }
+    ],
+    "discount": [
+      {
+        "query": "appliance discount stores near me",
+        "value": 18050
+      },
+      {
+        "query": "furniture discount stores near me",
+        "value": 3150
+      },
+      {
+        "query": "discount stores near me",
+        "value": 2150
+      },
+      {
+        "query": "discount flooring near me",
+        "value": 300
+      },
+      {
+        "query": "alo discount code",
+        "value": 50
+      },
+      {
+        "query": "skims discount code",
+        "value": 40
+      }
+    ],
+    "gold": [
+      {
+        "query": "tata gold etf share price",
+        "value": 100
+      },
+      {
+        "query": "gold and silver rate today",
+        "value": 100
+      },
+      {
+        "query": "gold mcx",
+        "value": 80
+      },
+      {
+        "query": "tata gold share price",
+        "value": 70
+      },
+      {
+        "query": "silver mcx",
+        "value": 70
+      },
+      {
+        "query": "silver rate today hyderabad",
+        "value": 70
+      },
+      {
+        "query": "gold bees share price",
+        "value": 70
+      },
+      {
+        "query": "silver rate",
+        "value": 60
+      },
+      {
+        "query": "silver rate today",
+        "value": 60
+      },
+      {
+        "query": "gold mcx live",
+        "value": 60
+      },
+      {
+        "query": "mcx gold price",
+        "value": 60
+      },
+      {
+        "query": "silver rate today delhi",
+        "value": 60
+      },
+      {
+        "query": "silver mcx live",
+        "value": 60
+      },
+      {
+        "query": "silver rate today mumbai",
+        "value": 60
+      },
+      {
+        "query": "gold silver prices",
+        "value": 50
+      },
+      {
+        "query": "gold etf",
+        "value": 50
+      },
+      {
+        "query": "gold rate today hyderabad",
+        "value": 50
+      },
+      {
+        "query": "today gold rate in hyderabad",
+        "value": 50
+      },
+      {
+        "query": "gold rate today ahmedabad",
+        "value": 50
+      },
+      {
+        "query": "gold price in india",
+        "value": 40
+      },
+      {
+        "query": "sensex",
+        "value": 40
+      },
+      {
+        "query": "usd to inr",
+        "value": 40
+      },
+      {
+        "query": "gold price in nepal",
+        "value": 40
+      }
+    ],
+    "translator": [
+      {
+        "query": "afrikaans to english translator",
+        "value": 100
+      },
+      {
+        "query": "papago translator",
+        "value": 50
+      },
+      {
+        "query": "baybayin translator",
+        "value": 50
+      }
+    ],
+    "comic": [
+      {
+        "query": "tyrus comic book",
+        "value": 2550
+      },
+      {
+        "query": "the beauty comic",
+        "value": 130
+      },
+      {
+        "query": "bato comic",
+        "value": 120
+      },
+      {
+        "query": "comic con dublin",
+        "value": 100
+      }
+    ],
+    "yoga": [],
+    "Blender": [
+      {
+        "query": "smapp blender",
+        "value": 3200
+      }
+    ],
+    "hub": [
+      {
+        "query": "atu student hub",
+        "value": 70
+      },
+      {
+        "query": "ub hub",
+        "value": 50
+      },
+      {
+        "query": "acca study hub",
+        "value": 40
+      },
+      {
+        "query": "desihub",
+        "value": 40
+      }
+    ],
+    "anime": [
+      {
+        "query": "frieren anime",
+        "value": 50
+      },
+      {
+        "query": "frieren",
+        "value": 40
+      }
+    ],
+    "profile": [
+      {
+        "query": "fake profile movie",
+        "value": 110
+      },
+      {
+        "query": "how to get jamb profile code",
+        "value": 100
+      },
+      {
+        "query": "how to generate profile code for jamb",
+        "value": 100
+      },
+      {
+        "query": "lngshot profile",
+        "value": 80
+      },
+      {
+        "query": "jamb profile code",
+        "value": 80
+      },
+      {
+        "query": "fake profile cast",
+        "value": 60
+      },
+      {
+        "query": "company profile",
+        "value": 60
+      },
+      {
+        "query": "my iec profile login",
+        "value": 50
+      }
+    ],
+    "framework": [
+      {
+        "query": "greenland framework deal",
+        "value": 49500
+      },
+      {
+        "query": "trump greenland framework",
+        "value": 3750
+      },
+      {
+        "query": "greenland framework",
+        "value": 2550
+      },
+      {
+        "query": "framework for greenland",
+        "value": 1300
+      },
+      {
+        "query": "astro",
+        "value": 90
+      },
+      {
+        "query": "astro framework",
+        "value": 90
+      },
+      {
+        "query": "nist ai risk management framework",
+        "value": 50
+      },
+      {
+        "query": "pestel framework",
+        "value": 50
+      },
+      {
+        "query": "framework traduction",
+        "value": 40
+      }
+    ],
+    "library": [
+      {
+        "query": "is the library open on mlk day",
+        "value": 750
+      },
+      {
+        "query": "how many books to be considered a library",
+        "value": 80
+      }
+    ],
+    "template": []
   }
 }
