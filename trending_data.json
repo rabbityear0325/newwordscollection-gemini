@@ -1,7 +1,7 @@
 {
-  "last_updated": "2026-01-24 01:54:02",
+  "last_updated": "2026-01-24 12:06:04",
   "total_seeds_tracked": 270,
-  "active_data_count": 65,
+  "active_data_count": 78,
   "data": {
     "ai": [
       {
@@ -11,103 +11,103 @@
     ],
     "assistant": [
       {
-        "query": "the mortuary assistant movie",
-        "value": 6950
-      },
-      {
-        "query": "mortuary assistant movie",
-        "value": 5950
-      },
-      {
-        "query": "the mortuary assistant movie release date",
-        "value": 4450
-      },
-      {
-        "query": "nabard development assistant recruitment",
-        "value": 4100
-      },
-      {
         "query": "primary assistant teacher result 2026",
-        "value": 3900
+        "value": 4600
       },
       {
-        "query": "the mortuary assistant film",
-        "value": 3600
+        "query": "lopez voice assistant",
+        "value": 4550
       },
       {
         "query": "the assistant picked the wrong enemy",
-        "value": 3200
+        "value": 3800
       },
       {
         "query": "primary assistant teacher result",
+        "value": 2900
+      },
+      {
+        "query": "lopez voice assistant settlement",
         "value": 2550
       },
       {
-        "query": "nabard development assistant",
-        "value": 1700
+        "query": "lopez voice assistant settlement reddit",
+        "value": 2050
       },
       {
-        "query": "nabard development assistant 2026",
-        "value": 1500
-      },
-      {
-        "query": "nabard",
-        "value": 1150
-      },
-      {
-        "query": "nabard development assistant salary",
-        "value": 1050
-      },
-      {
-        "query": "the mortuary assistant",
-        "value": 950
+        "query": "what is lopez voice assistant settlement",
+        "value": 1950
       },
       {
         "query": "primary assistant teacher exam result 2026",
-        "value": 900
+        "value": 1200
       },
       {
-        "query": "mortuary assistant",
-        "value": 600
+        "query": "the mortuary assistant movie release date",
+        "value": 1050
       },
       {
-        "query": "nabard development assistant notification",
-        "value": 550
+        "query": "the mortuary assistant film",
+        "value": 850
       },
       {
-        "query": "the mortuary assistant game",
-        "value": 500
+        "query": "the mortuary assistant movie",
+        "value": 800
       },
       {
-        "query": "mortuary assistant game",
-        "value": 450
+        "query": "mortuary assistant movie",
+        "value": 800
       },
       {
         "query": "primary assistant teacher",
-        "value": 120
+        "value": 450
       },
       {
-        "query": "rbi assistant notification 2026",
-        "value": 100
+        "query": "lopez voice assistant class action settlement",
+        "value": 400
       },
       {
-        "query": "rbi assistant",
-        "value": 80
+        "query": "the mortuary assistant",
+        "value": 300
+      },
+      {
+        "query": "nabard development assistant recruitment",
+        "value": 300
+      },
+      {
+        "query": "mortuary assistant",
+        "value": 300
+      },
+      {
+        "query": "the mortuary assistant game",
+        "value": 300
+      },
+      {
+        "query": "mortuary assistant game",
+        "value": 250
+      },
+      {
+        "query": "nabard development assistant 2026",
+        "value": 150
+      },
+      {
+        "query": "nabard development assistant",
+        "value": 140
+      },
+      {
+        "query": "nabard",
+        "value": 110
+      },
+      {
+        "query": "lab assistant syllabus",
+        "value": 70
       },
       {
         "query": "ibps",
         "value": 70
       },
       {
-        "query": "rbi assistant salary",
-        "value": 70
-      },
-      {
-        "query": "rbi assistant notification",
-        "value": 60
-      },
-      {
-        "query": "airforce medical assistant",
+        "query": "lab assistant form date 2026",
         "value": 50
       }
     ],
@@ -632,16 +632,16 @@
     ],
     "trading": [
       {
-        "query": "polymarket copy trading bot",
-        "value": 800
+        "query": "pokémon trading card game",
+        "value": 90
       },
       {
         "query": "arizone trading llc",
-        "value": 550
+        "value": 90
       },
       {
-        "query": "pokémon trading card game",
-        "value": 100
+        "query": "independent trading company",
+        "value": 50
       }
     ],
     "stock": [
@@ -965,51 +965,43 @@
     ],
     "Stack Overflow": [
       {
-        "query": "coursera",
-        "value": 8250
-      },
-      {
-        "query": "we work remotely",
-        "value": 6600
+        "query": "err_connection_refused",
+        "value": 7400
       },
       {
         "query": "freecodecamp",
-        "value": 200
-      },
-      {
-        "query": "stack overflow คือ",
-        "value": 140
+        "value": 160
       },
       {
         "query": "avast forum",
-        "value": 80
+        "value": 160
       },
       {
-        "query": "hackerrank",
-        "value": 80
+        "query": "product hunt",
+        "value": 90
       },
       {
-        "query": "stack overflow developer survey",
+        "query": "what is a stack overflow",
         "value": 80
       },
       {
         "query": "stack overflow developer survey 2025",
-        "value": 70
-      },
-      {
-        "query": "stack overflow survey 2025",
-        "value": 50
-      },
-      {
-        "query": "what is a stack overflow",
-        "value": 50
-      },
-      {
-        "query": "stack overflow jobs",
-        "value": 50
+        "value": 80
       },
       {
         "query": "stack overflow error",
+        "value": 50
+      },
+      {
+        "query": "github",
+        "value": 50
+      },
+      {
+        "query": "stack overflow survey 2025",
+        "value": 40
+      },
+      {
+        "query": "stack overflow java",
         "value": 40
       }
     ],
@@ -1079,12 +1071,8 @@
     ],
     "song": [
       {
-        "query": "arctic monkeys new song",
-        "value": 2600
-      },
-      {
         "query": "harry styles new song",
-        "value": 900
+        "value": 850
       },
       {
         "query": "kanye west heil hitler song",
@@ -1092,15 +1080,15 @@
       },
       {
         "query": "sean o'malley",
-        "value": 250
-      },
-      {
-        "query": "song sung blue streaming",
-        "value": 40
+        "value": 300
       },
       {
         "query": "song joong-ki",
-        "value": 40
+        "value": 60
+      },
+      {
+        "query": "border 2 song",
+        "value": 50
       }
     ],
     "Nintendo": [
@@ -1312,36 +1300,7 @@
         "value": 600
       }
     ],
-    "Github": [
-      {
-        "query": "メダマスク",
-        "value": 3600
-      },
-      {
-        "query": "メタマスグ",
-        "value": 3400
-      },
-      {
-        "query": "メタマースク",
-        "value": 2500
-      },
-      {
-        "query": "メタマスク ウォレット",
-        "value": 170
-      },
-      {
-        "query": "メタマスク metasupply gith",
-        "value": 140
-      },
-      {
-        "query": "メタマスク metasupply git",
-        "value": 130
-      },
-      {
-        "query": "メタマスク metasupply gi",
-        "value": 130
-      }
-    ],
+    "Github": [],
     "planner": [
       {
         "query": "nicola peltz wedding planner",
@@ -1570,12 +1529,16 @@
         "value": 100
       },
       {
-        "query": "papago translator",
+        "query": "baybayin translator",
         "value": 50
       },
       {
-        "query": "baybayin translator",
-        "value": 50
+        "query": "english to telugu translator",
+        "value": 40
+      },
+      {
+        "query": "papago translator",
+        "value": 40
       }
     ],
     "comic": [
@@ -1623,12 +1586,16 @@
     ],
     "anime": [
       {
-        "query": "frieren anime",
-        "value": 50
+        "query": "tomb raider king anime",
+        "value": 350
       },
       {
-        "query": "frieren",
-        "value": 40
+        "query": "anime card collection codes",
+        "value": 120
+      },
+      {
+        "query": "orb anime",
+        "value": 70
       }
     ],
     "profile": [
@@ -1713,6 +1680,419 @@
         "value": 80
       }
     ],
-    "template": []
+    "template": [],
+    "sketch": [
+      {
+        "query": "cool sketch animation",
+        "value": 10550
+      },
+      {
+        "query": "sketch cuidado con lo que dibujas",
+        "value": 140
+      },
+      {
+        "query": "fmb sketch",
+        "value": 70
+      },
+      {
+        "query": "sketch pelicula",
+        "value": 50
+      },
+      {
+        "query": "sketch manhwa",
+        "value": 40
+      }
+    ],
+    "movie": [
+      {
+        "query": "border movie review",
+        "value": 2500
+      },
+      {
+        "query": "baby girl malayalam movie",
+        "value": 800
+      },
+      {
+        "query": "clika movie",
+        "value": 550
+      },
+      {
+        "query": "border 2 movie",
+        "value": 450
+      },
+      {
+        "query": "shambala movie",
+        "value": 300
+      },
+      {
+        "query": "silent hill movie 2026",
+        "value": 300
+      },
+      {
+        "query": "he man movie",
+        "value": 300
+      },
+      {
+        "query": "mercy movie",
+        "value": 250
+      },
+      {
+        "query": "silent hill movie",
+        "value": 200
+      },
+      {
+        "query": "silent hill",
+        "value": 190
+      },
+      {
+        "query": "the rip movie",
+        "value": 160
+      },
+      {
+        "query": "rip movie",
+        "value": 140
+      },
+      {
+        "query": "sinners movie",
+        "value": 120
+      },
+      {
+        "query": "iron lung movie",
+        "value": 80
+      },
+      {
+        "query": "bruce springsteen movie",
+        "value": 70
+      }
+    ],
+    "Epic Games": [
+      {
+        "query": "arknights endfield",
+        "value": 1150
+      },
+      {
+        "query": "epic games store free game rustler",
+        "value": 300
+      },
+      {
+        "query": "status epic games",
+        "value": 200
+      },
+      {
+        "query": "epic games server status",
+        "value": 90
+      }
+    ],
+    "health": [
+      {
+        "query": "wales health ambassador",
+        "value": 24550
+      },
+      {
+        "query": "welsh health ambassador",
+        "value": 12400
+      },
+      {
+        "query": "athika ahmed",
+        "value": 5800
+      },
+      {
+        "query": "welsh health minister",
+        "value": 5700
+      },
+      {
+        "query": "wales health minister",
+        "value": 5700
+      },
+      {
+        "query": "uk health ambassador",
+        "value": 4300
+      },
+      {
+        "query": "health ambassador for wales",
+        "value": 3700
+      },
+      {
+        "query": "phil collins health",
+        "value": 250
+      },
+      {
+        "query": "health tips",
+        "value": 170
+      },
+      {
+        "query": "what is the world health organization",
+        "value": 150
+      },
+      {
+        "query": "world health organization",
+        "value": 140
+      }
+    ],
+    "career": [
+      {
+        "query": "stidham career stats",
+        "value": 8300
+      },
+      {
+        "query": "jarrett stidham career stats",
+        "value": 5200
+      },
+      {
+        "query": "dmrc career",
+        "value": 5000
+      },
+      {
+        "query": "carlos beltran career stats",
+        "value": 1450
+      },
+      {
+        "query": "anthony edwards career high",
+        "value": 950
+      },
+      {
+        "query": "bo nix college career",
+        "value": 900
+      },
+      {
+        "query": "travis kelce career news",
+        "value": 650
+      },
+      {
+        "query": "nmb career",
+        "value": 600
+      },
+      {
+        "query": "fernando mendoza college career",
+        "value": 400
+      },
+      {
+        "query": "mendoza college career",
+        "value": 400
+      },
+      {
+        "query": "btn career",
+        "value": 250
+      },
+      {
+        "query": "trust bank career",
+        "value": 170
+      },
+      {
+        "query": "state career service government of odisha",
+        "value": 140
+      },
+      {
+        "query": "carson beck college career",
+        "value": 140
+      },
+      {
+        "query": "city bank career",
+        "value": 140
+      },
+      {
+        "query": "curt cignetti coaching career",
+        "value": 140
+      },
+      {
+        "query": "virat kohli centuries in career",
+        "value": 120
+      },
+      {
+        "query": "google career dreamer",
+        "value": 80
+      },
+      {
+        "query": "wendys career",
+        "value": 80
+      },
+      {
+        "query": "career dreamer",
+        "value": 80
+      },
+      {
+        "query": "paragon career",
+        "value": 50
+      },
+      {
+        "query": "career fair",
+        "value": 50
+      },
+      {
+        "query": "assam career 2026",
+        "value": 50
+      }
+    ],
+    "trends": [
+      {
+        "query": "african cast trends",
+        "value": 1300
+      },
+      {
+        "query": "venture capital trends",
+        "value": 150
+      },
+      {
+        "query": "instagram trends today",
+        "value": 140
+      },
+      {
+        "query": "utd trends",
+        "value": 110
+      },
+      {
+        "query": "pinterest trends",
+        "value": 50
+      },
+      {
+        "query": "google trends api",
+        "value": 50
+      },
+      {
+        "query": "2016 trends",
+        "value": 40
+      }
+    ],
+    "interpreter": [
+      {
+        "query": "trump italian interpreter",
+        "value": 1800
+      },
+      {
+        "query": "can this love be translated",
+        "value": 300
+      },
+      {
+        "query": "interpreter adalah",
+        "value": 80
+      },
+      {
+        "query": "global interpreter lock python",
+        "value": 60
+      },
+      {
+        "query": "interpreter 意味",
+        "value": 50
+      },
+      {
+        "query": "lowy interpreter",
+        "value": 50
+      },
+      {
+        "query": "global interpreter lock",
+        "value": 50
+      }
+    ],
+    "mockup": [],
+    "Best": [
+      {
+        "query": "nuovi casino online vodds",
+        "value": 250
+      },
+      {
+        "query": "best picture nominees 2026",
+        "value": 200
+      }
+    ],
+    "Twitter": [
+      {
+        "query": "lacari twitter",
+        "value": 3000
+      },
+      {
+        "query": "lerato makwela trending video twitter",
+        "value": 1550
+      },
+      {
+        "query": "piers morgan twitter",
+        "value": 50
+      },
+      {
+        "query": "joe bastardi twitter",
+        "value": 50
+      }
+    ],
+    "How to": [
+      {
+        "query": "how to lose a popularity contest",
+        "value": 110
+      }
+    ],
+    "notifier": [
+      {
+        "query": "particle rain",
+        "value": 13150
+      },
+      {
+        "query": "wakes",
+        "value": 11400
+      },
+      {
+        "query": "lambdynamiclights",
+        "value": 9800
+      },
+      {
+        "query": "chunks fade in",
+        "value": 4400
+      },
+      {
+        "query": "aurora notifier",
+        "value": 450
+      },
+      {
+        "query": "invmove",
+        "value": 250
+      },
+      {
+        "query": "held item info",
+        "value": 250
+      },
+      {
+        "query": "tiny item animations",
+        "value": 200
+      },
+      {
+        "query": "item scroller",
+        "value": 200
+      },
+      {
+        "query": "bazaar notifier",
+        "value": 200
+      },
+      {
+        "query": "effective",
+        "value": 190
+      },
+      {
+        "query": "eating animation",
+        "value": 170
+      },
+      {
+        "query": "appleskin",
+        "value": 160
+      },
+      {
+        "query": "martian notifier watch",
+        "value": 150
+      },
+      {
+        "query": "outlook change notifier",
+        "value": 80
+      },
+      {
+        "query": "smooth swapping",
+        "value": 60
+      },
+      {
+        "query": "sodium",
+        "value": 60
+      }
+    ],
+    "Steam": [
+      {
+        "query": "arknights endfield steam",
+        "value": 650
+      }
+    ]
   }
 }
