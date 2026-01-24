@@ -155,21 +155,50 @@
                     readonly></textarea>
             </div>
 
-            <div class="flex justify-between items-center">
-                <span id="export-count" class="text-xs text-gray-400">0 keywords</span>
-                <div class="flex gap-2">
-                    <button onclick="refreshExport(100)"
-                        class="text-gray-500 hover:text-black text-sm font-medium px-3 py-2 transition-colors">
-                        Shuffle
+            <div class="flex flex-col gap-3">
+                <div class="flex justify-between items-center border-b pb-3 mb-1">
+                    <span id="export-count" class="text-xs text-gray-500 font-medium">Loading...</span>
+
+                    <div class="flex items-center gap-2">
+                        <button onclick="prevExportBatch()" id="btn-export-prev"
+                            class="p-1.5 rounded hover:bg-gray-100 text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                            disabled>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <span id="export-batch-indicator"
+                            class="text-xs font-mono text-gray-500 min-w-[60px] text-center">1 / 1</span>
+                        <button onclick="nextExportBatch()" id="btn-export-next"
+                            class="p-1.5 rounded hover:bg-gray-100 text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                            disabled>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center">
+                    <button onclick="shuffleExportKeywords()"
+                        class="text-gray-500 hover:text-black text-xs font-medium px-2 py-1 transition-colors flex items-center gap-1">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                            </path>
+                        </svg>
+                        Shuffle Order
                     </button>
                     <button onclick="copyToClipboard()"
-                        class="bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                        class="bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 shadow-sm">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3">
                             </path>
                         </svg>
-                        Copy List
+                        Copy Page
                     </button>
                 </div>
             </div>
@@ -319,11 +348,18 @@
         loadData();
 
         // Export functionality
+        // Export functionality variables
+        let exportAllKeywords = [];
+        let exportBatchIndex = 0;
+        const EXPORT_BATCH_SIZE = 100;
+
         function openExportModal() {
-            refreshExport(100);
             const modal = document.getElementById('export-modal');
             modal.classList.remove('hidden');
             modal.classList.add('flex');
+
+            // Initialize export data
+            prepareExportData();
         }
 
         function closeModal() {
@@ -332,31 +368,76 @@
             modal.classList.remove('flex');
         }
 
-        function refreshExport(limit = 100) {
-            const textarea = document.getElementById('export-area');
-            const countSpan = document.getElementById('export-count');
+        function prepareExportData() {
+            // Gather all unique keywords
+            let uniqueSet = new Set();
 
-            // Gather all keywords
-            let allKeywords = [];
-            // Assuming globalData is {seed: [items...]}
             Object.values(globalData).forEach(items => {
                 if (Array.isArray(items)) {
                     items.forEach(item => {
-                        if (item.query && !allKeywords.includes(item.query)) {
-                            allKeywords.push(item.query);
+                        if (item.query) {
+                            uniqueSet.add(item.query); // Set prevents duplicates automatically
                         }
                     });
                 }
             });
 
-            // Randomize or just take top? 
-            // The user might want new ones.
-            // Let's just shuffle them slightly to give variety if they click shuffle, or plain list.
-            // For now, let's just slice.
-            const limitedKeywords = allKeywords.slice(0, limit);
+            exportAllKeywords = Array.from(uniqueSet);
+            exportBatchIndex = 0; // Reset to first page
 
-            textarea.value = limitedKeywords.join('\n');
-            countSpan.innerText = `Showing ${limitedKeywords.length} of ${allKeywords.length} keywords`;
+            renderExportBatch();
+        }
+
+        function shuffleExportKeywords() {
+            // Fisher-Yates shuffle
+            for (let i = exportAllKeywords.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [exportAllKeywords[i], exportAllKeywords[j]] = [exportAllKeywords[j], exportAllKeywords[i]];
+            }
+            exportBatchIndex = 0; // Reset to first page after shuffle
+            renderExportBatch();
+        }
+
+        function renderExportBatch() {
+            const textarea = document.getElementById('export-area');
+            const countSpan = document.getElementById('export-count');
+            const batchIndicator = document.getElementById('export-batch-indicator');
+            const btnPrev = document.getElementById('btn-export-prev');
+            const btnNext = document.getElementById('btn-export-next');
+
+            const totalKeywords = exportAllKeywords.length;
+            const totalBatches = Math.ceil(totalKeywords / EXPORT_BATCH_SIZE) || 1;
+
+            // Calculate slice
+            const start = exportBatchIndex * EXPORT_BATCH_SIZE;
+            const end = Math.min(start + EXPORT_BATCH_SIZE, totalKeywords);
+
+            const currentBatch = exportAllKeywords.slice(start, end);
+
+            // Update UI
+            textarea.value = currentBatch.join('\n');
+
+            countSpan.innerText = `All keywords: ${totalKeywords}`;
+            batchIndicator.innerText = `${exportBatchIndex + 1} / ${totalBatches}`;
+
+            // Button states
+            btnPrev.disabled = exportBatchIndex === 0;
+            btnNext.disabled = exportBatchIndex >= totalBatches - 1;
+        }
+
+        function nextExportBatch() {
+            const totalBatches = Math.ceil(exportAllKeywords.length / EXPORT_BATCH_SIZE);
+            if (exportBatchIndex < totalBatches - 1) {
+                exportBatchIndex++;
+                renderExportBatch();
+            }
+        }
+
+        function prevExportBatch() {
+            if (exportBatchIndex > 0) {
+                exportBatchIndex--;
+                renderExportBatch();
+            }
         }
 
         function copyToClipboard() {
